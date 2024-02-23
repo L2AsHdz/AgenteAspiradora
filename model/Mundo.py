@@ -1,0 +1,18 @@
+from model.Aspiradora import Aspiradora
+from model.Cuadrante import Cuadrante
+
+
+class Mundo:
+
+    def __init__(self):
+        self.cuadrante_1 = Cuadrante("1", "Limpio", 5)
+        self.cuadrante_2 = Cuadrante("2", "Limpio", 10)
+        self.aspiradora = Aspiradora("En reposo", 1)
+        self.current_quadrant = self.cuadrante_1
+
+    def ensuciar_cuadrante(self, id_cuadrante):
+        if id_cuadrante == 1:
+            self.cuadrante_1.set_status("Sucio")
+        else:
+            self.cuadrante_2.set_status("Sucio")
+
