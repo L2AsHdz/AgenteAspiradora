@@ -15,9 +15,9 @@ class FoulingQuadrantService:
             return
 
         if option == "1":
-            self.__mundo.cuadrante_1.set_status("Sucio")
+            self.__mundo.cuadrante_1.set_status("sucio")
         elif option == "2":
-            self.__mundo.cuadrante_2.set_status("Sucio")
+            self.__mundo.cuadrante_2.set_status("sucio")
         else:
             self.__view.opcion_invalida()
             self.run()

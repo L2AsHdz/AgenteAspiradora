@@ -11,7 +11,7 @@ class Cuadrante:
         return self.__status
 
     def get_name(self):
-        return "Cuadrante " + str(self.__position)
+        return "cuadrante_" + str(self.__position)
 
     def set_position(self, position):
         self.__position = position

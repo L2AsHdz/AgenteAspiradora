@@ -1,0 +1,39 @@
+
+Estados: 'me_movi', 'estoy_en_A', 'estoy_en_B', 'cuadrante_sucio', 'cuadrante_limpio', 'no_hice_nada', 'limpie'
+
+Percepciones: 'sucio', 'limpio', 'cuadrante_A', 'cuadrante_B', 'termine'
+
+Reglas: {
+    'me_movi': 'preguntar_donde_estoy',
+    {'estoy_en_A', 'estoy_en_B'}: 'preguntar_esta_sucio',
+    'cuadrante_sucio': { 'limpiar', 'no_hacer_nada' },
+    { 'cuadrante_limpio', 'limpie' }: 'mover',
+    'no_hice_nada': 'limpiar',
+}
+
+Acciones: {
+    'preguntar_donde_estoy': 'donde_estoy?',
+    'preguntar_esta_sucio': 'esta_sucio?',
+    'no_hacer_nada': 'no estoy haciendo nada...',
+    'limpiar': 'limpiando...',
+    'mover': 'moviendome'
+}
+
+
+Modelo: {
+    ('me_movi', 'preguntar_donde_estoy', 'cuadrante_A'): 'estoy_en_A',
+    ('me_movi', 'preguntar_donde_estoy', 'cuadrante_B'): 'estoy_en_B',
+
+    ('estoy_en_A', 'preguntar_esta_sucio', 'sucio'): 'cuadrante_sucio',
+    ('estoy_en_A', 'preguntar_esta_sucio', 'limpio'): 'cuadrante_limpio',
+    ('estoy_en_B', 'preguntar_esta_sucio', 'sucio'): 'cuadrante_sucio',
+    ('estoy_en_B', 'preguntar_esta_sucio', 'limpio'): 'cuadrante_limpio',
+
+    ('cuadrante_sucio', 'limpiar', 'termine'): 'limpie',
+    ('cuadrante_sucio', 'no_hacer_nada', 'termine'): 'no_hice_nada',
+
+    ('no_hice_nada', 'limpiar', 'termine'): 'cuadrante_limpio',
+
+    ('cuadrante_limpio', 'mover', 'cuadrante_A'): 'me_movi',
+    ('cuadrante_limpio', 'mover', 'cuadrante_B'): 'me_movi'
+}
